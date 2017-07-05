@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">KTodo</string>
+    <string name="title_add_activity">Add new task</string>
+</resources>

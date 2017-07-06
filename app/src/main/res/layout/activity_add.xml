@@ -29,6 +29,8 @@
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/addTodoTitle"
+                android:inputType="text"
+                android:maxLines="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

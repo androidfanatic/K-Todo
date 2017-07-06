@@ -7,6 +7,7 @@ import androidfanatic.ktodo.R
 import androidfanatic.ktodo.add.AddActivity
 import androidfanatic.ktodo.base.MVPActivity
 import androidfanatic.ktodo.models.Todo
+import androidfanatic.ktodo.utils.LinearRecyclerViewItemDecoration
 import kotlinx.android.synthetic.main.activity_main.*
 
 // main activity
@@ -19,6 +20,7 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
         setContentView(R.layout.activity_main)
 
         todoList.layoutManager = LinearLayoutManager(applicationContext)
+        todoList.addItemDecoration(LinearRecyclerViewItemDecoration(16))
         todoList.adapter = todoAdapter
 
         addBtn?.setOnClickListener { _ ->

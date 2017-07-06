@@ -3,20 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
-    <!--<TextView-->
-        <!--android:gravity="center_vertical"-->
-        <!--android:textAppearance="?android:textAppearanceLarge"-->
-        <!--android:id="@+id/itemTodoTitleChar"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent"/>-->
+    <TextView
+        tools:text="T"
+        android:background="@drawable/rounded_textview"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceMediumInverse"
+        android:id="@+id/itemTodoTitleChar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"/>
 
-    <!--<android.support.v4.widget.Space-->
-        <!--android:layout_width="16dp"-->
-        <!--android:layout_height="match_parent"/>-->
+    <android.support.v4.widget.Space
+        android:layout_width="16dp"
+        android:layout_height="match_parent"/>
 
     <TextView
+        tools:text="Todo item"
         android:gravity="center_vertical"
         android:id="@+id/itemTodoTitle"
         android:layout_width="match_parent"

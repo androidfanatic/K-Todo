@@ -1,4 +1,4 @@
-package androidfanatic.todo;
+package androidfanatic.ktodo;
 
 import org.junit.Test;
 

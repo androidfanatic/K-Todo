@@ -1,0 +1,16 @@
+package androidfanatic.ktodo.main
+
+import android.support.v7.widget.RecyclerView
+import android.view.View
+import androidfanatic.ktodo.models.Todo
+import kotlinx.android.synthetic.main.todo_item.view.*
+
+// viewholder
+class TodoVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    fun bind(todo: Todo) {
+        if (todo.title.isNotEmpty()) {
+            itemView.itemTodoTitle.text = todo.title
+//            itemView.itemTodoTitleChar.text = todo.title[0].toString()
+        }
+    }
+}

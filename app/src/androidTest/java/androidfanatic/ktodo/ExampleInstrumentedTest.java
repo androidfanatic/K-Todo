@@ -1,4 +1,4 @@
-package androidfanatic.todo;
+package androidfanatic.ktodo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

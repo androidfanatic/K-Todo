@@ -3,6 +3,7 @@ package androidfanatic.ktodo.main
 import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
+import android.graphics.Typeface
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +44,10 @@ class TodoAdapter(var items: List<Todo> = emptyList()) : RecyclerView.Adapter<To
                 itemView.itemTodoTitle.text = todo.title
                 if (todo.done) {
                     itemView.itemTodoTitle.paintFlags = itemView.itemTodoTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                    itemView.itemTodoTitle.setTypeface(null, Typeface.ITALIC)
+                } else {
+                    itemView.itemTodoTitle.paintFlags = 0
+                    itemView.itemTodoTitle.setTypeface(null, Typeface.NORMAL)
                 }
                 itemView.itemTodoTitleChar.text = todo.title[0].toString()
                 itemView.itemTodoTitleChar.background.colorFilter = PorterDuffColorFilter(RandomColorGenerator(todo.title[0]), PorterDuff.Mode.MULTIPLY)

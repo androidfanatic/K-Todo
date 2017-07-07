@@ -21,6 +21,7 @@ class AddActivity : AppCompatActivity() {
         addTodoTitle?.apply {
             if (text.isNotEmpty()) {
                 Todo(text.toString()).save()
+                text.clear()
                 Timber.d("Finished")
                 finish()
             } else {

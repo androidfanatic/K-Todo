@@ -20,18 +20,17 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        todoList.layoutManager = LinearLayoutManager(applicationContext)
+        initTodoList()
 
+        addBtn?.setOnClickListener { startActivity(Intent(this, AddActivity::class.java)) }
+    }
+
+    private fun initTodoList() {
+        todoList.layoutManager = LinearLayoutManager(applicationContext)
         val divider = DividerItemDecoration(applicationContext, DividerItemDecoration.VERTICAL)
         divider.setDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.todo_divider))
-
         todoList.addItemDecoration(divider)
-
         todoList.adapter = todoAdapter
-
-        addBtn?.setOnClickListener { _ ->
-            startActivity(Intent(this, AddActivity::class.java))
-        }
     }
 
     override fun onResume() {
@@ -44,4 +43,3 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
         todoAdapter.notifyDataSetChanged()
     }
 }
-

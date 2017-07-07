@@ -14,7 +14,7 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
         actionBar?.setDisplayHomeAsUpEnabled(true)
-        addOkBtn?.setOnClickListener { _ -> addItem() }
+        addOkBtn?.setOnClickListener { addItem() }
     }
 
     fun addItem() {

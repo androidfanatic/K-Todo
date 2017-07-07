@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
@@ -12,8 +13,8 @@
         android:gravity="center"
         android:textAppearance="?android:textAppearanceMediumInverse"
         android:id="@+id/itemTodoTitleChar"
-        android:layout_width="32dp"
-        android:layout_height="32dp"/>
+        android:layout_width="48dp"
+        android:layout_height="48dp"/>
 
     <android.support.v4.widget.Space
         android:layout_width="16dp"
@@ -23,6 +24,7 @@
         tools:text="Todo item"
         android:gravity="center_vertical"
         android:id="@+id/itemTodoTitle"
+        android:textAppearance="?android:textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

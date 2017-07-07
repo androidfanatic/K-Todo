@@ -4,8 +4,8 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import androidfanatic.ktodo.models.Todo
-import androidfanatic.ktodo.utils.RandomColorGenerator
+import androidfanatic.ktodo.model.Todo
+import androidfanatic.ktodo.util.RandomColorGenerator
 import kotlinx.android.synthetic.main.todo_item.view.*
 
 // viewholder

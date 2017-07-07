@@ -3,7 +3,7 @@ package androidfanatic.ktodo.add
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import androidfanatic.ktodo.R
-import androidfanatic.ktodo.models.Todo
+import androidfanatic.ktodo.model.Todo
 import kotlinx.android.synthetic.main.activity_add.*
 import timber.log.Timber
 
@@ -24,7 +24,7 @@ class AddActivity : AppCompatActivity() {
                 Timber.d("Finished")
                 finish()
             } else {
-                error("Add a todo text")
+                error = "Add a todo text"
             }
         }
     }

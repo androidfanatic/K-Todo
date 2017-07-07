@@ -3,7 +3,7 @@ package androidfanatic.ktodo.main
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidfanatic.ktodo.models.Todo
+import androidfanatic.ktodo.model.Todo
 import androidfanatic.ktodo.R
 
 // adapter

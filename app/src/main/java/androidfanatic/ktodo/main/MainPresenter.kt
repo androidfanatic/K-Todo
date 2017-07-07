@@ -1,7 +1,7 @@
 package androidfanatic.ktodo.main
 
 import androidfanatic.ktodo.base.MVPPresenter
-import androidfanatic.ktodo.models.Todo
+import androidfanatic.ktodo.model.Todo
 import com.orm.query.Select
 
 class MainPresenter : MVPPresenter<MainView> {
@@ -18,6 +18,7 @@ class MainPresenter : MVPPresenter<MainView> {
 
     fun fetchList() {
         val items = Select.from(Todo::class.java).orderBy("ID DESC").list()
+        items.map { it -> it.title = it.title.capitalize() }
         view?.updateItems(items)
     }
 

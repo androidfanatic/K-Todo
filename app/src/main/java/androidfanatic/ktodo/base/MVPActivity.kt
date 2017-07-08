@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 
 // view
-abstract class MVPActivity<in V: MVPView, out P: MVPPresenter<V>> : AppCompatActivity(), MVPView {
+abstract class MVPActivity<V: MVPView, out P: MVPPresenter<V>> : AppCompatActivity(), MVPView {
 
     protected abstract val presenter: P
 

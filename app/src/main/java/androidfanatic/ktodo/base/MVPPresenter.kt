@@ -1,8 +1,16 @@
 package androidfanatic.ktodo.base
 
 // presenter
-interface MVPPresenter<in V: MVPView> {
-    fun attach(view: V)
-    fun detach(view: V)
+abstract class MVPPresenter<V: MVPView> {
+
+    protected var view: V? = null
+
+    fun attach(view: V) {
+        this.view = view
+    }
+
+    fun detach(view: V) {
+        this.view = null
+    }
 }
 

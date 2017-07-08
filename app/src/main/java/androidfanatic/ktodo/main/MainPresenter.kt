@@ -4,22 +4,17 @@ import androidfanatic.ktodo.base.MVPPresenter
 import androidfanatic.ktodo.model.Todo
 import com.orm.query.Select
 
-class MainPresenter : MVPPresenter<MainView> {
-
-    private var view: MainView? = null
-
-    override fun attach(view: MainView) {
-        this.view = view
-    }
-
-    override fun detach(view: MainView) {
-        this.view = null
-    }
+class MainPresenter : MVPPresenter<MainView>() {
 
     fun fetchList() {
         val items = getTodos()
-        items.map { it.title = it.title.capitalize() }
-        view?.updateItems(items)
+        if (items.size > 0){
+            items.map { it.title = it.title.capitalize() }
+            view?.updateItems(items)
+            view?.hideEmptyListLayout()
+        } else {
+            view?.showEmptyListLayout()
+        }
     }
 
     fun getTodos(): List<Todo>

@@ -1,14 +1,15 @@
 package androidfanatic.ktodo.add
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import androidfanatic.ktodo.R
+import androidfanatic.ktodo.base.MVPActivity
+import androidfanatic.ktodo.base.MVPPresenter
+import androidfanatic.ktodo.base.MVPView
 import androidfanatic.ktodo.model.Todo
 import kotlinx.android.synthetic.main.activity_add.*
-import timber.log.Timber
 
 // add activity
-class AddActivity : AppCompatActivity() {
+class AddActivity(override val presenter: AddPresenter = AddPresenter()) : MVPActivity<AddView, AddPresenter>(), AddView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +27,24 @@ class AddActivity : AppCompatActivity() {
                 }
                 todo.save()
                 text.clear()
-                Timber.d("Finished")
                 finish()
             } else {
-                error = "Add a todo text"
+                noTitleError()
             }
         }
     }
+
+    override fun noTitleError(){
+        addTodoTitle?.error = "Add a todo text"
+    }
+}
+
+class AddPresenter: MVPPresenter<AddView>() {
+    fun saveNewTodo(title: String, message: String = "") {
+        Todo(title, message).save()
+    }
+}
+
+interface AddView:MVPView{
+    fun noTitleError()
 }

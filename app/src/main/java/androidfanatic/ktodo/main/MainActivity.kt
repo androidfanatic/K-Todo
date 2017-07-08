@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import androidfanatic.ktodo.R
 import androidfanatic.ktodo.add.AddActivity
 import androidfanatic.ktodo.base.MVPActivity
@@ -41,5 +42,13 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
     override fun updateItems(items: List<Todo>){
         todoAdapter.items = items
         todoAdapter.notifyDataSetChanged()
+    }
+
+    override fun showEmptyListLayout(){
+        todoListEmpty.visibility= View.VISIBLE
+    }
+
+    override fun hideEmptyListLayout(){
+        todoListEmpty.visibility= View.GONE
     }
 }

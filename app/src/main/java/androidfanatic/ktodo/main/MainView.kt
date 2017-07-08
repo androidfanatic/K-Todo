@@ -5,4 +5,6 @@ import androidfanatic.ktodo.model.Todo
 
 interface MainView: MVPView {
     fun updateItems(items: List<Todo>)
+    fun showEmptyListLayout()
+    fun hideEmptyListLayout()
 }

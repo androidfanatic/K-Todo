@@ -1,35 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="16dp"
-    android:id="@+id/itemTodoRow"
+    android:orientation="vertical"
     android:paddingBottom="16dp"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal">
+    android:paddingTop="16dp">
 
-    <TextView
-        tools:text="T"
-        android:background="@drawable/rounded_textview"
-        android:gravity="center"
-        android:textAppearance="?android:textAppearanceMediumInverse"
-        android:id="@+id/itemTodoTitleChar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"/>
-
-    <android.support.v4.widget.Space
-        android:layout_width="16dp"
-        android:layout_height="match_parent"/>
-
-    <TextView
-        android:maxLines="1"
-        android:ellipsize="end"
-        tools:text="Todo item"
-        android:gravity="center_vertical"
-        android:id="@+id/itemTodoTitle"
-        android:textAppearance="?android:textAppearanceMedium"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/itemTodoRow"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/itemTodoTitleChar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_textview"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMediumInverse"
+            tools:text="T"/>
+
+        <android.support.v4.widget.Space
+            android:layout_width="16dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/itemTodoTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textAppearance="?android:textAppearanceMedium"
+            tools:text="Todo item"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/itemMetaRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Done: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="bold"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/itemTodoDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Added: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/itemTodoTimeAdded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+        </LinearLayout>
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Message: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/itemTodoMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

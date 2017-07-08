@@ -20,7 +20,11 @@ class AddActivity : AppCompatActivity() {
     fun addItem() {
         addTodoTitle?.apply {
             if (text.isNotEmpty()) {
-                Todo(text.toString()).save()
+                val todo = Todo(text.toString())
+                if (addTodoMessage?.text!!.isNotEmpty()){
+                    todo.message = addTodoMessage?.text.toString()
+                }
+                todo.save()
                 text.clear()
                 Timber.d("Finished")
                 finish()

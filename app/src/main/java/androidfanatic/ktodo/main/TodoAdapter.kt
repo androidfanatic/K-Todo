@@ -12,7 +12,6 @@ import androidfanatic.ktodo.R
 import androidfanatic.ktodo.model.Todo
 import androidfanatic.ktodo.util.RandomColorGenerator
 import kotlinx.android.synthetic.main.todo_item.view.*
-import timber.log.Timber
 
 // adapter
 class TodoAdapter(var items: List<Todo> = emptyList()) : RecyclerView.Adapter<TodoAdapter.TodoVH>() {
@@ -27,30 +26,46 @@ class TodoAdapter(var items: List<Todo> = emptyList()) : RecyclerView.Adapter<To
 
     inner class TodoVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        init {
-            Timber.d("init")
-            itemView.itemTodoRow.setOnClickListener { toggleDone() }
+        private fun setDone(isDone: Boolean){
+            val item = items[adapterPosition]
+            if (item.done != isDone){
+                item.done = isDone
+                item.save()
+                notifyItemChanged(adapterPosition)
+            }
         }
 
-        private fun toggleDone() {
-            val item = items[adapterPosition]
-            item.done = !item.done
-            item.save()
-            notifyItemChanged(adapterPosition)
+        private fun toggleMetaRow() {
+            if (itemView.itemMetaRow.visibility == View.GONE) {
+                itemView.itemMetaRow.visibility = View.VISIBLE
+            } else {
+                itemView.itemMetaRow.visibility = View.GONE
+            }
         }
 
         fun bind(todo: Todo) {
             if (todo.title.isNotEmpty()) {
+
                 itemView.itemTodoTitle.text = todo.title
+                itemView.itemTodoTimeAdded.text = todo.getTimeAddedString()
+                itemView.itemTodoMessage.text = todo.message
+                itemView.itemMetaRow.visibility = View.GONE
+
                 if (todo.done) {
+                    itemView.itemTodoDone.isChecked = true
                     itemView.itemTodoTitle.paintFlags = itemView.itemTodoTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                     itemView.itemTodoTitle.setTypeface(null, Typeface.ITALIC)
                 } else {
+                    itemView.itemTodoDone.isChecked = false
                     itemView.itemTodoTitle.paintFlags = 0
                     itemView.itemTodoTitle.setTypeface(null, Typeface.NORMAL)
                 }
+
                 itemView.itemTodoTitleChar.text = todo.title[0].toString()
                 itemView.itemTodoTitleChar.background.colorFilter = PorterDuffColorFilter(RandomColorGenerator(todo.title[0]), PorterDuff.Mode.MULTIPLY)
+
+                itemView.itemTodoRow.setOnClickListener { toggleMetaRow() }
+                itemView.itemTodoDone.setOnCheckedChangeListener { _, isChecked -> setDone(isChecked) }
             }
         }
     }

@@ -23,6 +23,8 @@
         android:layout_height="match_parent"/>
 
     <TextView
+        android:maxLines="1"
+        android:ellipsize="end"
         tools:text="Todo item"
         android:gravity="center_vertical"
         android:id="@+id/itemTodoTitle"

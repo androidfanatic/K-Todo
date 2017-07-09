@@ -1,11 +1,18 @@
-<img src="device-2017-07-09-201057.png" width="300" height="480" /> 
+## Simple Todo
 
-<img src="device-2017-07-09-201114.png" width="300" height="480" /> 
+A simple todo with minimal design and features, offers no cloud integration which means it works offline. Also comes with a widget that can be placed on homescreen and is configurable.
 
-<img src="device-2017-07-09-201235.png" width="300" height="480" /> 
+## Features
 
-<img src="device-2017-07-09-201248.png" width="300" height="480" /> 
+* Add, remove todo items
+* Homescreen widget
+* Works offline i.e. doesn't connect to cloud
+* Minimal design and functionality
 
-<img src="device-2017-07-09-201301.png" width="300" height="480" /> 
+## Screenshots
 
-<img src="device-2017-07-09-201328.png" width="300" height="480" /> 
+<img src="device-2017-07-09-201057.png" width="300" height="480" /> <img src="device-2017-07-09-201114.png" width="300" height="480" /> 
+
+<img src="device-2017-07-09-201235.png" width="300" height="480" /> <img src="device-2017-07-09-201248.png" width="300" height="480" /> 
+
+<img src="device-2017-07-09-201301.png" width="300" height="480" /> <img src="device-2017-07-09-201328.png" width="300" height="480" /> 

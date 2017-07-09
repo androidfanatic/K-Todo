@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingTop="16dp">
+    android:paddingBottom="@dimen/todo_item_bottom_padding"
+    android:paddingTop="@dimen/todo_item_top_padding">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,15 +17,15 @@
 
         <TextView
             android:id="@+id/itemTodoTitleChar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/rounded_textview"
+            android:layout_width="@dimen/todo_item_title_char_size"
+            android:layout_height="@dimen/todo_item_title_char_size"
+            android:background="@drawable/rounded_text_view"
             android:gravity="center"
             android:textAppearance="?android:textAppearanceMediumInverse"
             tools:text="T"/>
 
         <android.support.v4.widget.Space
-            android:layout_width="16dp"
+            android:layout_width="@dimen/todo_item_vertical_space"
             android:layout_height="match_parent"/>
 
         <TextView
@@ -40,55 +41,34 @@
     </LinearLayout>
 
     <LinearLayout
+        app:elevation="4dp"
+        android:background="#eee"
         android:visibility="gone"
         android:id="@+id/itemMetaRow"
+        android:layout_marginTop="16dp"
+        android:padding="@dimen/todo_meta_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.v4.widget.Space
-            android:layout_width="match_parent"
-            android:layout_height="16dp"/>
-
         <LinearLayout
+            android:weightSum="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_weight=".2"
+                android:layout_width="1dp"
                 android:layout_height="wrap_content"
-                android:text="Done: "
+                android:text="@string/added"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textStyle="bold"/>
-
-            <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/itemTodoDone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-        <android.support.v4.widget.Space
-            android:layout_width="match_parent"
-            android:layout_height="16dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Added: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textStyle="bold"/>
-
 
             <TextView
                 android:id="@+id/itemTodoTimeAdded"
-                android:layout_width="wrap_content"
+                android:layout_weight=".8"
+                android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
 
@@ -96,30 +76,56 @@
 
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
-            android:layout_height="16dp"/>
+            android:layout_height="@dimen/todo_item_vertical_space"/>
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:weightSum="1"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_weight=".2"
+                android:layout_width="1dp"
                 android:layout_height="wrap_content"
-                android:text="Message: "
+                android:text="@string/message"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/itemTodoMessage"
-                android:layout_width="wrap_content"
+                android:layout_weight=".8"
+                android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
 
         </LinearLayout>
 
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/todo_item_vertical_space"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="2"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/itemTodoComplete"
+                android:layout_weight="1"
+                android:text="Mark as done"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/itemTodoDelete"
+                android:layout_weight="1"
+                android:text="Delete task"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

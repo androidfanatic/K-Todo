@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">KTodo</string>
     <string name="title_add_activity">Add new task</string>
+    <string name="added">Added</string>
+    <string name="message">Message</string>
+    <string name="todo_message">Todo message</string>
+    <string name="todo_title">Todo title</string>
 </resources>

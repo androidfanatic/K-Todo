@@ -4,7 +4,7 @@ import androidfanatic.ktodo.base.MVPView
 import androidfanatic.ktodo.model.Todo
 
 interface MainView: MVPView {
-    fun updateItems(items: List<Todo>)
     fun showEmptyListLayout()
     fun hideEmptyListLayout()
+    fun updateItems(items: MutableList<Todo>)
 }

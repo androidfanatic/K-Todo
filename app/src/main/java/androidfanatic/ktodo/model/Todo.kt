@@ -12,4 +12,5 @@ data class Todo(
 ) : SugarRecord() {
     fun widgetText() = String.format(" %s %s\r\n", if (done) "\u2714" else "\u2718", title)
     fun getTimeAddedString() = SimpleDateFormat().format(timeAdded)
+    fun titleFirstChar() = if (done) "\u2714" else title[0].toString()
 }

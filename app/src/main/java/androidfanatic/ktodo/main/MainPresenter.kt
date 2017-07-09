@@ -10,7 +10,7 @@ class MainPresenter : MVPPresenter<MainView>() {
         val items = getTodos()
         if (items.size > 0){
             items.map { it.title = it.title.capitalize() }
-            view?.updateItems(items)
+            view?.updateItems(items.toMutableList())
             view?.hideEmptyListLayout()
         } else {
             view?.showEmptyListLayout()

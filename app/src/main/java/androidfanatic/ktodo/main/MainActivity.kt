@@ -39,7 +39,7 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
         presenter.fetchList()
     }
 
-    override fun updateItems(items: List<Todo>){
+    override fun updateItems(items: MutableList<Todo>){
         todoAdapter.items = items
         todoAdapter.notifyDataSetChanged()
     }

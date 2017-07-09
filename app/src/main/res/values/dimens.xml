@@ -13,8 +13,9 @@
     <dimen name="add_item_padding">16dp</dimen>
     <dimen name="add_item_vertical_space">16dp</dimen>
     <dimen name="fab_layout_margin">16dp</dimen>
-    <dimen name="todo_list_left_margin">16dp</dimen>
-    <dimen name="todo_list_right_margin">16dp</dimen>
+    <dimen name="todo_list_left_padding">16dp</dimen>
+    <dimen name="todo_list_right_padding">16dp</dimen>
     <dimen name="fab_elevation">4dp</dimen>
     <dimen name="todo_meta_padding">16dp</dimen>
+    <dimen name="todo_list_empty_space">16dp</dimen>
 </resources>

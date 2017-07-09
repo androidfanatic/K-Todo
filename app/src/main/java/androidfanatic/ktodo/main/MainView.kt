@@ -7,4 +7,6 @@ interface MainView: MVPView {
     fun showEmptyListLayout()
     fun hideEmptyListLayout()
     fun updateItems(items: MutableList<Todo>)
+    fun setTodoDone(adapterPosition: Int, done: Boolean)
+    fun deleteTodo(adapterPosition: Int)
 }

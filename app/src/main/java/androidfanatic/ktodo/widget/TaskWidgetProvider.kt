@@ -11,15 +11,16 @@ import androidfanatic.ktodo.R
 import androidfanatic.ktodo.main.MainActivity
 import androidfanatic.ktodo.main.MainPresenter
 
+fun updateWidgets(context: Context) {
+    val appWidgetManager = AppWidgetManager.getInstance(context)
+    val appWidgetIds = appWidgetManager.getAppWidgetIds(ComponentName(context, TaskWidgetProvider::class.java))
+    if (appWidgetIds.size > 0) {
+        TaskWidgetProvider().onUpdate(context, appWidgetManager, appWidgetIds)
+    }
+}
+
 class TaskWidgetProvider:AppWidgetProvider(){
 
-    fun updateWidgets(context: Context) {
-        val appWidgetManager = AppWidgetManager.getInstance(context)
-        val appWidgetIds = appWidgetManager.getAppWidgetIds(ComponentName(context, TaskWidgetProvider::class.java))
-        if (appWidgetIds.size > 0) {
-            TaskWidgetProvider().onUpdate(context, appWidgetManager, appWidgetIds)
-        }
-    }
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
 

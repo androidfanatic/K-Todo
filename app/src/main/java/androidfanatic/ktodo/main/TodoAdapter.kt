@@ -14,7 +14,7 @@ import androidfanatic.ktodo.util.RandomColorGenerator
 import kotlinx.android.synthetic.main.todo_item.view.*
 
 // adapter
-class TodoAdapter(var items: MutableList<Todo> = mutableListOf()) : RecyclerView.Adapter<TodoAdapter.TodoVH>() {
+class TodoAdapter(var items: MutableList<Todo> = mutableListOf(), val view: MainView) : RecyclerView.Adapter<TodoAdapter.TodoVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             = TodoVH(LayoutInflater.from(parent.context).inflate(R.layout.todo_item, parent, false))
@@ -26,21 +26,6 @@ class TodoAdapter(var items: MutableList<Todo> = mutableListOf()) : RecyclerView
 
     inner class TodoVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private fun setDone(isDone: Boolean){
-            val item = items[adapterPosition]
-            if (item.done != isDone){
-                item.done = isDone
-                item.save()
-                notifyItemChanged(adapterPosition)
-            }
-        }
-
-        private fun delete(){
-            items[adapterPosition].delete()
-            items.removeAt(adapterPosition)
-            notifyItemRemoved(adapterPosition)
-        }
-
         private fun toggleMetaRow() {
             if (itemView.itemMetaRow.visibility == View.GONE) {
                 itemView.itemMetaRow.visibility = View.VISIBLE
@@ -49,30 +34,38 @@ class TodoAdapter(var items: MutableList<Todo> = mutableListOf()) : RecyclerView
             }
         }
 
+
         fun bind(todo: Todo) {
             if (todo.title.isNotEmpty()) {
 
                 itemView.itemTodoTitle.text = todo.title
                 itemView.itemTodoTimeAdded.text = todo.getTimeAddedString()
-                itemView.itemTodoMessage.text = todo.message
                 itemView.itemMetaRow.visibility = View.GONE
 
+                if (todo.message.isEmpty()){
+                    itemView.itemTodoMessageRow.visibility = View.GONE
+                } else {
+                    itemView.itemTodoMessageRow.visibility = View.VISIBLE
+                    itemView.itemTodoMessage.text = todo.message
+                }
+
                 if (todo.done) {
-                    itemView.itemTodoComplete.text = "Mark as undone"
+                    itemView.itemTodoComplete.setImageResource(R.drawable.ic_cross_white_48dp)
                     itemView.itemTodoTitle.paintFlags = itemView.itemTodoTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                     itemView.itemTodoTitle.setTypeface(null, Typeface.ITALIC)
                 } else {
-                    itemView.itemTodoComplete.text = "Mark as done"
+                    itemView.itemTodoComplete.setImageResource(R.drawable.ic_check_white_48dp)
                     itemView.itemTodoTitle.paintFlags = 0
                     itemView.itemTodoTitle.setTypeface(null, Typeface.NORMAL)
                 }
 
                 itemView.itemTodoTitleChar.text = todo.titleFirstChar()
-                itemView.itemTodoTitleChar.background.colorFilter = PorterDuffColorFilter(RandomColorGenerator(todo.title[0]), PorterDuff.Mode.MULTIPLY)
+                val randomColor = RandomColorGenerator(todo.title[0])
+                itemView.itemTodoTitleChar.background.colorFilter = PorterDuffColorFilter(randomColor, PorterDuff.Mode.MULTIPLY)
 
                 itemView.itemTodoRow.setOnClickListener { toggleMetaRow() }
-                itemView.itemTodoComplete.setOnClickListener { setDone(!todo.done) }
-                itemView.itemTodoDelete.setOnClickListener { delete() }
+                itemView.itemTodoComplete.setOnClickListener { view.setTodoDone(adapterPosition, !todo.done) }
+                itemView.itemTodoDelete.setOnClickListener { view.deleteTodo(adapterPosition) }
             }
         }
     }

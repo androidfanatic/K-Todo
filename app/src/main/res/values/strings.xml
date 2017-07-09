@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">KTodo</string>
+    <string name="app_name">Todo</string>
     <string name="title_add_activity">Add new task</string>
     <string name="added">Added</string>
     <string name="message">Message</string>
-    <string name="todo_message">Todo message</string>
-    <string name="todo_title">Todo title</string>
+    <string name="todo_message">Task message</string>
+    <string name="todo_title">Task title</string>
+    <string name="application_logo">Application logo</string>
+    <string name="delete_task">Delete task</string>
+    <string name="mark_task_as_done_or_undone">Mark task as done or undone</string>
 </resources>

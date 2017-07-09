@@ -20,9 +20,15 @@
         android:orientation="vertical">
 
         <ImageView
+            android:contentDescription="@string/application_logo"
             android:src="@mipmap/ic_launcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:scaleType="centerCrop"
+            android:layout_width="64dp"
+            android:layout_height="64dp"/>
+        
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/todo_list_empty_space"/>
 
         <TextView
             android:text="Go ahead and add some tasks!"
@@ -35,16 +41,16 @@
         android:id="@+id/todoList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/todo_list_left_margin"
-        android:layout_marginRight="@dimen/todo_list_right_margin"
+        android:paddingLeft="@dimen/todo_list_left_padding"
+        android:paddingRight="@dimen/todo_list_right_padding"
+        android:paddingStart="@dimen/todo_list_left_padding"
+        android:paddingEnd="@dimen/todo_list_right_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:layout_marginStart="@dimen/todo_list_left_margin"
-        android:layout_marginEnd="@dimen/todo_list_right_margin">
+        app:layout_constraintVertical_bias="1.0">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -53,9 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:elevation="@dimen/fab_elevation"
-        android:layout_marginBottom="@dimen/fab_layout_margin"
-        android:layout_marginEnd="@dimen/fab_layout_margin"
-        android:layout_marginRight="@dimen/fab_layout_margin"
+        android:layout_margin="@dimen/fab_layout_margin"
         android:src="@drawable/ic_add_white_48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>

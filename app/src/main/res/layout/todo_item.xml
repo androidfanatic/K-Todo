@@ -3,13 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemTodoLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/todo_item_bottom_padding"
-    android:paddingTop="@dimen/todo_item_top_padding">
+    android:orientation="vertical">
 
     <LinearLayout
+        android:paddingBottom="@dimen/todo_item_bottom_padding"
+        android:paddingTop="@dimen/todo_item_top_padding"
         android:id="@+id/itemTodoRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +42,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="16dp"
         android:id="@+id/itemMetaRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,44 +71,8 @@
                 android:layout_width="1dp"
                 android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
+                android:layout_weight="8"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
-
-
-            <LinearLayout
-                android:layout_weight="4"
-                android:id="@+id/itemTodoActionRow"
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"
-                android:gravity="end">
-
-                <ImageButton
-                    android:contentDescription="@string/mark_task_as_done_or_undone"
-                    android:scaleType="centerInside"
-                    android:background="@drawable/rounded_image_button"
-                    android:id="@+id/itemTodoComplete"
-                    android:padding="8dp"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_check_white_48dp"
-                    android:text="Mark as done"/>
-
-                <android.support.v4.widget.Space
-                    android:layout_width="8dp"
-                    android:layout_height="match_parent"/>
-
-                <ImageButton
-                    android:contentDescription="@string/delete_task"
-                    android:scaleType="centerInside"
-                    android:layout_width="32dp"
-                    android:padding="8dp"
-                    android:layout_height="32dp"
-                    android:background="@drawable/rounded_image_button"
-                    android:id="@+id/itemTodoDelete"
-                    android:src="@drawable/ic_delete_white_48dp"
-                    />
-
-            </LinearLayout>
 
         </LinearLayout>
 

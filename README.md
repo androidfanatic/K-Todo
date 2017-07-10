@@ -11,6 +11,6 @@ A simple todo with minimal design and features, offers no cloud integration whic
 
 ## Screenshots
 
-<img src="device-2017-07-09-201057.png" width="220" /> <img src="device-2017-07-09-201114.png" width="220" /> <img src="device-2017-07-09-201235.png" width="220" /> 
+<img src="ss/device-2017-07-09-201057.png" width="220" /> <img src="ss/device-2017-07-09-201114.png" width="220" /> <img src="ss/device-2017-07-09-201235.png" width="220" /> 
 
-<img src="device-2017-07-09-201248.png" width="220" /> <img src="device-2017-07-09-201301.png" width="220" /> <img src="device-2017-07-09-201328.png" width="220" /> 
+<img src="ss/device-2017-07-09-201248.png" width="220" /> <img src="ss/device-2017-07-09-201301.png" width="220" /> <img src="ss/device-2017-07-09-201328.png" width="220" /> 

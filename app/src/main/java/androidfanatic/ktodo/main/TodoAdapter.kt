@@ -26,12 +26,13 @@ class TodoAdapter(var items: MutableList<Todo> = mutableListOf(), val view: Main
 
     inner class TodoVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private fun toggleMetaRow() {
+        private fun toggleMetaRow() : Boolean {
             if (itemView.itemMetaRow.visibility == View.GONE) {
                 itemView.itemMetaRow.visibility = View.VISIBLE
             } else {
                 itemView.itemMetaRow.visibility = View.GONE
             }
+            return true
         }
 
 
@@ -50,11 +51,9 @@ class TodoAdapter(var items: MutableList<Todo> = mutableListOf(), val view: Main
                 }
 
                 if (todo.done) {
-                    itemView.itemTodoComplete.setImageResource(R.drawable.ic_cross_white_48dp)
                     itemView.itemTodoTitle.paintFlags = itemView.itemTodoTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                     itemView.itemTodoTitle.setTypeface(null, Typeface.ITALIC)
                 } else {
-                    itemView.itemTodoComplete.setImageResource(R.drawable.ic_check_white_48dp)
                     itemView.itemTodoTitle.paintFlags = 0
                     itemView.itemTodoTitle.setTypeface(null, Typeface.NORMAL)
                 }
@@ -63,9 +62,9 @@ class TodoAdapter(var items: MutableList<Todo> = mutableListOf(), val view: Main
                 val randomColor = RandomColorGenerator(todo.title[0])
                 itemView.itemTodoTitleChar.background.colorFilter = PorterDuffColorFilter(randomColor, PorterDuff.Mode.MULTIPLY)
 
-                itemView.itemTodoRow.setOnClickListener { toggleMetaRow() }
-                itemView.itemTodoComplete.setOnClickListener { view.setTodoDone(adapterPosition, !todo.done) }
-                itemView.itemTodoDelete.setOnClickListener { view.deleteTodo(adapterPosition) }
+                itemView.itemTodoRow.setOnClickListener { view.toggleTodoDone(adapterPosition) }
+                itemView.itemTodoRow.setOnLongClickListener { toggleMetaRow() }
+                //itemView.itemTodoDelete.setOnClickListener { view.deleteTodo(adapterPosition) }
             }
         }
     }

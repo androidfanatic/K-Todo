@@ -6,6 +6,8 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import androidfanatic.ktodo.R
 import androidfanatic.ktodo.add.AddActivity
@@ -32,6 +34,21 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
         divider.setDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.todo_divider))
         todoList.addItemDecoration(divider)
         todoList.adapter = todoAdapter
+        ItemTouchHelper(TodoItemSwipeListenr()).attachToRecyclerView(todoList)
+    }
+
+    inner class TodoItemSwipeListenr : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+
+        override fun onMove(recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder?, target: RecyclerView.ViewHolder?): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder?, direction: Int) {
+            when (direction) {
+                ItemTouchHelper.RIGHT -> viewHolder?.apply { deleteTodo(adapterPosition) }
+            }
+        }
+
     }
 
     override fun onResume() {
@@ -40,30 +57,29 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
         updateWidgets(this)
     }
 
-    override fun updateItems(items: MutableList<Todo>){
+    override fun updateItems(items: MutableList<Todo>) {
         todoAdapter.items = items
         todoAdapter.notifyDataSetChanged()
+        updateWidgets(this)
     }
 
-    override fun showEmptyListLayout(){
-        todoListEmpty.visibility= View.VISIBLE
+    override fun showEmptyListLayout() {
+        todoListEmpty.visibility = View.VISIBLE
     }
 
-    override fun hideEmptyListLayout(){
-        todoListEmpty.visibility= View.GONE
+    override fun hideEmptyListLayout() {
+        todoListEmpty.visibility = View.GONE
     }
 
-    override fun setTodoDone(adapterPosition: Int, done: Boolean){
+    override fun toggleTodoDone(adapterPosition: Int) {
         val item = todoAdapter.items[adapterPosition]
-        if (item.done != done){
-            item.done = done
-            item.save()
-            todoAdapter.notifyItemChanged(adapterPosition)
-            updateWidgets(this)
-        }
+        item.done = !item.done
+        item.save()
+        todoAdapter.notifyItemChanged(adapterPosition)
+        updateWidgets(this)
     }
 
-    override fun deleteTodo(adapterPosition: Int){
+    override fun deleteTodo(adapterPosition: Int) {
         AlertDialog
                 .Builder(this)
                 .setTitle("Confirm delete?")
@@ -71,12 +87,17 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
                 .setPositiveButton("Confirm", { dialog, which ->
                     todoAdapter.items[adapterPosition].delete()
                     todoAdapter.items.removeAt(adapterPosition)
-                    if(todoAdapter.items.size == 0) {
+                    if (todoAdapter.items.size == 0) {
                         showEmptyListLayout()
                     }
                     todoAdapter.notifyItemRemoved(adapterPosition)
                 })
-                .setNegativeButton("Cancel", { dialog, which -> dialog.dismiss() })
+                .setOnDismissListener {
+                    todoAdapter.notifyItemChanged(adapterPosition)
+                }
+                .setNegativeButton("Cancel", { dialog, which ->
+                    dialog.dismiss()
+                })
                 .show()
     }
 

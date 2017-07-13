@@ -8,11 +8,14 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidfanatic.ktodo.R
 import androidfanatic.ktodo.add.AddActivity
 import androidfanatic.ktodo.base.MVPActivity
 import androidfanatic.ktodo.model.Todo
+import androidfanatic.ktodo.pref.PrefActivity
 import androidfanatic.ktodo.widget.updateWidgets
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -26,6 +29,19 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
         setContentView(R.layout.activity_main)
         initTodoList()
         addBtn?.setOnClickListener { startActivity(Intent(this, AddActivity::class.java)) }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.preferenceMenuItem -> startActivity(Intent(this, PrefActivity::class.java))
+        }
+        return false
     }
 
     private fun initTodoList() {
@@ -102,3 +118,5 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
     }
 
 }
+
+

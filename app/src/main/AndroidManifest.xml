@@ -3,19 +3,26 @@
           package="androidfanatic.ktodo">
 
     <application
-        android:fullBackupContent="true"
         android:name=".base.MainApp"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <meta-data android:name="DATABASE" android:value="ktodo.db" />
-        <meta-data android:name="VERSION" android:value="3" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="androidfanatic.ktodo" />
+        <meta-data
+            android:name="DATABASE"
+            android:value="ktodo.db"/>
+        <meta-data
+            android:name="VERSION"
+            android:value="3"/>
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true"/>
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="androidfanatic.ktodo"/>
 
         <activity
             android:name=".main.MainActivity"
@@ -28,15 +35,20 @@
         </activity>
 
         <activity
-            android:label="@string/title_add_activity"
             android:name=".add.AddActivity"
-            android:parentActivityName=".main.MainActivity"
-            />
+            android:label="@string/title_add_activity"
+            android:parentActivityName=".main.MainActivity"/>
+
+        <activity
+            android:name=".pref.PrefActivity"
+            android:label="@string/title_pref_activity"
+            android:parentActivityName=".main.MainActivity"/>
 
         <receiver android:name=".widget.TaskWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_information"/>

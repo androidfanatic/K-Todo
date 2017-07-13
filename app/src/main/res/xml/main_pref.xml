@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:key="@string/pref_key_widget"
+        android:title="@string/widget">
+        <com.u1aryz.android.colorpicker.ColorPreference
+            android:defaultValue="0xFFFFFFFF"
+            android:key="@string/pref_key_fg"
+            android:persistent="true"
+            android:title="@string/widget_text_color"
+            app:alphaSlider="true"
+            />
+        <com.u1aryz.android.colorpicker.ColorPreference
+            android:defaultValue="0x00000000"
+            android:key="@string/pref_key_bg"
+            android:persistent="true"
+            android:title="@string/widget_background_color"
+            app:alphaSlider="true"
+            />
+    </PreferenceCategory>
+
+</PreferenceScreen>

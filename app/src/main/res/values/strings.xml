@@ -8,4 +8,13 @@
     <string name="application_logo">Application logo</string>
     <string name="delete_task">Delete task</string>
     <string name="mark_task_as_done_or_undone">Mark task as done or undone</string>
+    <string name="preferences">Preferences</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_pref_activity">Preferences</string>
+    <string name="pref_key_fg">WIGET_COLOR_FG</string>
+    <string name="pref_key_bg">WIDGET_COLOR_BG</string>
+    <string name="pref_key_widget">WIDGET</string>
+    <string name="widget">Widget</string>
+    <string name="widget_text_color">Widget text color</string>
+    <string name="widget_background_color">Widget background color</string>
 </resources>

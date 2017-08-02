@@ -102,6 +102,7 @@ class MainActivity(override val presenter: MainPresenter = MainPresenter()) : MV
                 .setMessage("Delete this task forever? This action can not be reversed.")
                 .setPositiveButton("Confirm", { dialog, which ->
                     todoAdapter.items[adapterPosition].delete()
+                    updateWidgets(this)
                     todoAdapter.items.removeAt(adapterPosition)
                     if (todoAdapter.items.size == 0) {
                         showEmptyListLayout()

@@ -12,6 +12,7 @@
         android:paddingBottom="@dimen/todo_item_bottom_padding"
         android:paddingTop="@dimen/todo_item_top_padding"
         android:id="@+id/itemTodoRow"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -45,7 +46,7 @@
         android:id="@+id/itemMetaRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#eee"
+        android:background="#ddd"
         android:orientation="vertical"
         android:padding="@dimen/todo_meta_padding"
         android:visibility="visible">
